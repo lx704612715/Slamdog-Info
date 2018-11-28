@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(PersonTrack)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)xx
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -134,7 +134,7 @@ message_filters
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-
+${OpenCV_INCLUDE_DIRS}
    ${catkin_INCLUDE_DIRS}
 )
 
@@ -146,7 +146,7 @@ include_directories(
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
@@ -164,7 +164,6 @@ include_directories(
 
 #add_executable(PersonTrack_node src/PersonTrack_subscriber.cpp)
 add_executable(PersonTrackImage_node src/Image_subscriber.cpp)
-
 ## Specify libraries to link a library or executable target against
 #target_link_libraries(
 #    PersonTrack_node
@@ -176,6 +175,7 @@ target_link_libraries(
 
     PersonTrackImage_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
  )
 #############
 ## Install ##
